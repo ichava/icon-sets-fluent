@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\Ichava\IconSetsFluent\Providers;
 
-use Simtabi\Laranail\Ichava\Support\IconPackServiceProvider;
+use Simtabi\Laranail\Ichava\Providers\IconPackServiceProvider;
 use Simtabi\Laranail\Ichava\IconSetsFluent\Constants\IconsConstants;
 use Simtabi\Laranail\Ichava\IconSetsFluent\View\Components\IconComponent;
 
