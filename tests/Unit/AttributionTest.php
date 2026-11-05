@@ -83,3 +83,21 @@ it(description: 'ships the NOTICE file beside the licence', closure: function ()
     expect(is_file(attribution_root() . '/resources/assets/svg/licenses/fluentui-system-icons/NOTICE'))->toBeTrue();
     $this->assertStringContainsString('resources/assets/svg/licenses/fluentui-system-icons/NOTICE', (string) file_get_contents(attribution_root() . '/ATTRIBUTION.md'));
 });
+
+it(description: 'marks the hand-supplied licence directory with a source.md that records both texts', closure: function () {
+    // The npm package ships no licence file, so a real sync would delete this
+    // directory unless it holds the marker. Exact names from the listing:
+    // is_file() would accept any casing on a case-insensitive filesystem, and
+    // icon-sets-sync's sink does not.
+    $dir = attribution_root() . '/resources/assets/svg/licenses/fluentui-system-icons';
+    $names = array_values(array_diff(scandir($dir) ?: [], ['.', '..']));
+    sort($names);
+
+    expect($names)->toBe(['LICENSE', 'NOTICE', 'source.md'], 'licenses/fluentui-system-icons/ must hold exactly LICENSE, NOTICE and source.md');
+
+    $marker = (string) file_get_contents("{$dir}/source.md");
+    foreach (['LICENSE', 'NOTICE'] as $file) {
+        expect($marker)->toContain("`{$file}`")
+            ->and($marker)->toContain((string) hash_file('sha256', "{$dir}/{$file}"));
+    }
+});
