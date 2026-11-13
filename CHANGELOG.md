@@ -10,7 +10,7 @@ All notable changes to `ichava/icon-sets-fluent` follow [Keep a Changelog](https
 - **The hand-supplied licence texts are marked with `licenses/fluentui-system-icons/source.md`**, which records where `LICENSE` and `NOTICE` came from and their SHA-256. `@fluentui/svg-icons` ships no licence file, so without the marker a real sync would delete the directory. The upstream sync runs icon-sets-sync `cbebf08` (icon-sets-sync#89), up from `06b17d7`, the first commit whose licence sink accepts the lowercase marker. `AttributionTest` fails if the marker, either text, or a hash in it goes missing.
 - **The upstream sync runs icon-sets-sync `06b17d7`** (icon-sets-sync#88), up from `5fa93a6`, which adds this pack's recipe, the `split-variants` and `exclude` transforms, and the `licence_sha256` pin on the upstream licence text. The `uses:` pin and `toolkit-ref` move together; the reusable workflow's inputs did not change between the two commits, so the caller's `with:` block is untouched.
 
-## [0.1.0] - TBD
+## [0.1.0] - 2026-11-13
 
 First release of `ichava/icon-sets-fluent` (pack plan rank, owner decision of 2026-11-04 to ship every planned pack in v0.1.0).
 
